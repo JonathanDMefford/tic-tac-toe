@@ -12,18 +12,18 @@ function buildElement(elementType, classes, id, htmlContent) {
 let title = buildElement('h1', 'text-center my-5', '', 'Tic-Tac-Toe');
 body.appendChild(title);
 
-let gameBoard = buildElement('div', 'container', '', '');
+let gameBoard = buildElement('div', 'container', 'board', '');
 
 for (let i = 0; i < 3; i++) { 
-    let mainRow = buildElement('div', 'row mx-5 border-top border-bottom', '', '');
+    let mainRow = buildElement('div', 'row border-top border-bottom', 'gamerow', '');
     for (let j = 0; j < 3; j++) {
-        let mainCol = buildElement('div', 'col-4 text-center border-right border-left p-5', '', 'x');
+        let mainCol = buildElement('div', 'col-4 text-center border-right border-left p-5', 'tile', 'x');
         mainRow.appendChild(mainCol);
     }
     gameBoard.appendChild(mainRow);
 }
 
-let resetButton = buildElement('button', 'btn-primary my-5 mx-auto', '', 'Reset Game');
+let resetButton = buildElement('button', 'btn-primary my-5', '', 'Reset Game');
 gameBoard.appendChild(resetButton);
 
 

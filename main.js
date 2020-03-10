@@ -20,7 +20,6 @@ let winCombo = [
     ['2', '4', '6']
 ];
 
-let arr = [];
 
 let state = 0;
 function playGame() {
@@ -37,8 +36,14 @@ function playGame() {
     }
 
     for (let i = 0; i < winCombo.length; i++) {
-        arr.push(winCombo[i]);
-        console.log(arr);
+        let win1 = winCombo[i][0];
+        let win2 = winCombo[i][1];
+        let win3 = winCombo[i][2];
+        console.log(win1, win2, win3);
+    }
+
+    if (state >= 9) {
+        turnText.innerHTML = 'The game is a tie!';
     }
 }
 
@@ -52,12 +57,13 @@ function restartGame() {
 
 function buildGame() {
     state = 0;
-    let title = buildElement('h1', 'text-center my-4', '', 'Tic-Tac-Toe');
+    let title = buildElement('h1', 'text-center my-4', 'title', 'Tic-Tac-Toe');
     let turn = buildElement('h6', 'text-center mt-3', 'turn', "Player X's Turn");
     title.appendChild(turn);
     body.appendChild(title);
     let gameBoard = buildElement('div', 'container', 'board', '');
     let tiles = 0;
+
     for (let i = 0; i < 3; i++) {
         let mainRow = buildElement('div', 'row border-top border-bottom mx-auto', 'gamerow', '');
         for (let j = 0; j < 3; j++) {
@@ -72,11 +78,11 @@ function buildGame() {
     let buttonRow = buildElement('div', 'row', '', '');
     let buttonCol = buildElement('div', 'col-6 text-center mx-auto', '', '');
     let resetButton = buildElement('button', 'btn-dark my-5 mx-auto', 'reset', 'Reset Game');
+    resetButton.addEventListener('click', restartGame);
     buttonCol.appendChild(resetButton);
     buttonRow.appendChild(buttonCol);
     gameBoard.appendChild(buttonRow);
     body.appendChild(gameBoard);
-    resetButton.addEventListener('click', restartGame);
 }
 
 buildGame();

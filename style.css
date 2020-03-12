@@ -3,3 +3,7 @@
     height: 20vh;
     max-height: 40rem;
 }
+
+html, body {
+    background-color: lightslategray;
+}
